@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="body">
+
+<div class="login-container">
+
+    <form class="login-form">
+
+        <h2>Login</h2>
+
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+
+        <!-- Role Buttons -->
+        <label>Select your role:</label>
+        <div class="role-group">
+            <button type="button" class="role-btn">Admin</button>
+            <button type="button" class="role-btn">Provider</button>
+            <button type="button" class="role-btn">Client</button>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+
+        <p class="signup-text">
+            Don't have an account? <a href="signup.html">Sign up</a>
+        </p>
+
+    </form>
+
+</div>
+
+<script>
+const buttons = document.querySelectorAll(".role-btn");
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+    });
+});
+</script>
+
+</body>
+</html>

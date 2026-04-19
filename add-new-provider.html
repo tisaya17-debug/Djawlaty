@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <a href="index.html" class="sidebar-logo">
+        <img src="djawlaty1.png" height="120" width="140">
+    </a>
+
+    <nav class="sidebar-nav">
+        <a href="admin.html" class="sidebar-link">Dashboard</a>
+        <a href="admin-bookings.html" class="sidebar-link ">Bookings</a>
+        <a href="admin-providers.html" class="sidebar-link active">Providers</a>
+        <a href="destinations.html" class="sidebar-link">Destinations</a>
+    </nav>
+
+    <div class="sidebar-section">
+        <p class="sidebar-section-title">Settings</p>
+        <nav class="sidebar-nav">
+            <a href="setting.html" class="sidebar-link">Settings</a>
+            <a href="index.html" class="sidebar-link">Logout</a>
+        </nav>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <div class="providers-table">
+        <div class="providers-table-header">
+            <h3 class="providers-table-title">Providers Requests</h3>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Provider ID</th>
+                    <th>Service name</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>#BK-2024-001</td>
+                    <td>John Smith</td>
+                    <td>Flight + Hotel (Paris)</td>
+                    <td>Mar 28, 2026</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                </tr>
+
+                <tr>
+                    <td>#BK-2024-002</td>
+                    <td>Sarah Johnson</td>
+                    <td>Japan Tour Package</td>
+                    <td>Mar 27, 2026</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                </tr>
+
+                <tr>
+                    <td>#BK-2024-003</td>
+                    <td>Michael Brown</td>
+                    <td>Restaurant Reservation</td>
+                    <td>Mar 27, 2026</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                </tr>
+
+                <tr>
+                    <td>#BK-2024-004</td>
+                    <td>Emily Davis</td>
+                    <td>Hotel (Dubai)</td>
+                    <td>Mar 26, 2026</td>
+                    <td><span class="status-badge confirmed">Confirmed</span></td>
+                </tr>
+
+                <tr>
+                    <td>#BK-2024-005</td>
+                    <td>David Wilson</td>
+                    <td>Flight (NYC-London)</td>
+                    <td>Mar 25, 2026</td>
+                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

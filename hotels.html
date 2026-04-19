@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotels - Djawlaty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+       <img src="djawlaty1.png" height="120px" width="140px">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="flights.html">Flights</a></li>
+        <li><a href="hotels.html" class="active">Hotels</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li><a href="tours.html">Tours</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost">Login</a>
+        <a href="admin.html" class="btn btn-primary">Dashboard</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Find Your Perfect <span class="text-accent">Stay</span></h1>
+    <p>Discover hotels, resorts, and unique accommodations worldwide</p>
+  </header>
+
+  <!-- Filters and Results -->
+  <section class="results-section">
+    <div class="container">
+      <!-- Filters Panel -->
+      <div class="filters-panel">
+        <div class="filters-header">
+          <h3>Search Filters</h3>
+          <button class="btn btn-ghost btn-sm">Reset All</button>
+        </div>
+        <div class="filters-grid">
+          <div class="filter-group">
+            <label>Destination</label>
+            <input type="text" placeholder="City or hotel name" value="Paris">
+          </div>
+          <div class="filter-group">
+            <label>Check-in</label>
+            <input type="date">
+          </div>
+          <div class="filter-group">
+            <label>Check-out</label>
+            <input type="date">
+          </div>
+          <div class="filter-group">
+            <label>Guests</label>
+            <select>
+              <option>1 Guest</option>
+              <option selected>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4+ Guests</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Star Rating</label>
+            <select>
+              <option>Any</option>
+              <option>3 Stars+</option>
+              <option>4 Stars+</option>
+              <option>5 Stars</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Price Range</label>
+            <div class="price-range">
+              <input type="range" min="50" max="1000" value="500" id="priceRange">
+              <div class="price-values">
+                <span>$50</span>
+                <span id="priceValue">$500</span>
+              </div>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Amenities</label>
+            <select>
+              <option>All Amenities</option>
+              <option>Pool</option>
+              <option>Spa</option>
+              <option>Gym</option>
+              <option>Restaurant</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Weather Preference</label>
+            <select>
+              <option>Any Weather</option>
+              <option>Sunny</option>
+              <option>Mild</option>
+              <option>Cool</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Header -->
+      <div class="results-header">
+        <p class="results-count">Showing <strong>18</strong> hotels</p>
+        <select class="sort-select" id="sortSelect">
+          <option value="recommended">Recommended</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+        </select>
+      </div>
+
+      <!-- Hotel Results -->
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel Le Marais">
+            <span class="result-badge">Best Seller</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Hotel Le Marais</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Paris, France
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.8</span>
+              <span class="reviews">(324 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Free WiFi</span>
+              <span class="amenity-tag">Spa</span>
+              <span class="amenity-tag">Pool</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$189 <span>/ night</span></div>
+              <a href="booking.html?type=hotel&id=1" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80" alt="Ritz Paris">
+            <span class="result-badge">Luxury</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Ritz Paris</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Place Vendome, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.9</span>
+              <span class="reviews">(892 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">5-Star</span>
+              <span class="amenity-tag">Michelin Restaurant</span>
+              <span class="amenity-tag">Spa</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$850 <span>/ night</span></div>
+              <a href="booking.html?type=hotel&id=2" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="Hotel Parisien">
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Hotel Parisien</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Saint-Germain, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.5</span>
+              <span class="reviews">(156 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Central Location</span>
+              <span class="amenity-tag">Breakfast</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$125 <span>/ night</span></div>
+              <a href="booking.html?type=hotel&id=3" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80" alt="Boutique Hotel Eiffel">
+            <span class="result-badge">Boutique</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Boutique Hotel Eiffel</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              7th Arrondissement, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.7</span>
+              <span class="reviews">(245 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Eiffel View</span>
+              <span class="amenity-tag">Rooftop Bar</span>
+              <span class="amenity-tag">Gym</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$275 <span>/ night</span></div>
+              <a href="booking.html?type=hotel&id=4" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Grand Hotel Opera">
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Grand Hotel Opera</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Opera District, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.6</span>
+              <span class="reviews">(412 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Historic Building</span>
+              <span class="amenity-tag">Restaurant</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$210 <span>/ night</span></div>
+              <a href="booking.html?type=hotel&id=5" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80" alt="Montmartre Residence">
+            <span class="result-badge">Family Friendly</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Montmartre Residence</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Montmartre, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.4</span>
+              <span class="reviews">(189 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Kitchen</span>
+              <span class="amenity-tag">Washer</span>
+              <span class="amenity-tag">Terrace</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$145 <span>/ night</span></div>
+              <a href="booking.html?type=hotel&id=6" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span>Djawlaty</span>
+          </a>
+          <p>Your trusted partner for unforgettable travel experiences.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="flights.html">Flights</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+            <li><a href="restaurants.html">Restaurants</a></li>
+            <li><a href="tours.html">Tours</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Djawlaty. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

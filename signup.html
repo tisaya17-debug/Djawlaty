@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="body">
+
+<div class="login-container">
+
+    <form class="login-form">
+
+        <h2>Sign Up</h2>
+
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+
+        <!-- Role Selection -->
+        <label>Select your role:</label>
+        <div class="role-group">
+            <button type="button" class="role-btn" data-role="provider">Provider</button>
+            <button type="button" class="role-btn" data-role="client">Client</button>
+        </div>
+
+        <!-- Provider only fields -->
+        <div id="provider-fields" style="display:none;">
+    <label>Select your field:</label>
+
+    <div class="field-group">
+        <button type="button" class="field-btn">Hotel</button>
+        <button type="button" class="field-btn">Restaurant</button>
+        <button type="button" class="field-btn">Tour Operators</button>
+    </div>
+</div>
+        <button type="submit" class="login-btn">Create Account</button>
+
+        <p class="signup-text">
+            Already have an account? <a href="login.html">Login</a>
+        </p>
+
+    </form>
+
+</div>
+
+<!-- External JS -->
+<script src="main.js"></script>
+
+</body>
+</html>

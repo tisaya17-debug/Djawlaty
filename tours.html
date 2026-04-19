@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tours - Djawlaty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="djawlaty1.png" height="120px" width="140px">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="flights.html">Flights</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li><a href="tours.html" class="active">Tours</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost">Login</a>
+        <a href="admin.html" class="btn btn-primary">Dashboard</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Guided <span class="text-accent">Tours</span></h1>
+    <p>Join expert-led group tours or customize your own adventure</p>
+  </header>
+
+  <!-- Filters and Results -->
+  <section class="results-section">
+    <div class="container">
+      <!-- Filters Panel -->
+      <div class="filters-panel">
+        <div class="filters-header">
+          <h3>Search Filters</h3>
+          <button class="btn btn-ghost btn-sm">Reset All</button>
+        </div>
+        <div class="filters-grid">
+          <div class="filter-group">
+            <label>Destination</label>
+            <input type="text" placeholder="Country or region">
+          </div>
+          <div class="filter-group">
+            <label>Start Date</label>
+            <input type="date">
+          </div>
+          <div class="filter-group">
+            <label>Duration</label>
+            <select>
+              <option>Any Duration</option>
+              <option>1-3 Days</option>
+              <option>4-7 Days</option>
+              <option selected>1-2 Weeks</option>
+              <option>2+ Weeks</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Tour Type</label>
+            <select>
+              <option>All Types</option>
+              <option>Adventure</option>
+              <option selected>Cultural</option>
+              <option>Relaxation</option>
+              <option>Wildlife</option>
+              <option>Food &amp; Wine</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Group Size</label>
+            <select>
+              <option>Any Size</option>
+              <option>Private (1-4)</option>
+              <option selected>Small (5-12)</option>
+              <option>Medium (13-20)</option>
+              <option>Large (21+)</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Price Range</label>
+            <div class="price-range">
+              <input type="range" min="500" max="10000" value="5000" id="priceRange">
+              <div class="price-values">
+                <span>$500</span>
+                <span id="priceValue">$5000</span>
+              </div>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Activity Level</label>
+            <select>
+              <option>Any Level</option>
+              <option>Easy</option>
+              <option selected>Moderate</option>
+              <option>Challenging</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Weather Preference</label>
+            <select>
+              <option>Any Weather</option>
+              <option>Warm &amp; Sunny</option>
+              <option>Mild</option>
+              <option>Cool</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Header -->
+      <div class="results-header">
+        <p class="results-count">Showing <strong>12</strong> tours</p>
+        <select class="sort-select" id="sortSelect">
+          <option value="recommended">Recommended</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="duration">Shortest First</option>
+        </select>
+      </div>
+
+      <!-- Tour Results -->
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80" alt="Japan Cultural Tour">
+            <span class="result-badge">Best Seller</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Japan Cultural Discovery</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Tokyo, Kyoto, Osaka
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.9</span>
+              <span class="reviews">(156 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">12 Days</span>
+              <span class="amenity-tag">Cultural</span>
+              <span class="amenity-tag">Small Group</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$3,499 <span>/ person</span></div>
+              <a href="booking.html?type=tour&id=1" class="btn btn-primary btn-sm">View Tour</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="African Safari">
+            <span class="result-badge">Adventure</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">African Safari Adventure</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Kenya &amp; Tanzania
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.8</span>
+              <span class="reviews">(98 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">10 Days</span>
+              <span class="amenity-tag">Wildlife</span>
+              <span class="amenity-tag">Luxury</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$5,899 <span>/ person</span></div>
+              <a href="booking.html?type=tour&id=2" class="btn btn-primary btn-sm">View Tour</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80" alt="Italian Culinary">
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Tuscan Culinary Journey</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Tuscany, Italy
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.9</span>
+              <span class="reviews">(212 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">7 Days</span>
+              <span class="amenity-tag">Food &amp; Wine</span>
+              <span class="amenity-tag">Cooking Class</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$2,799 <span>/ person</span></div>
+              <a href="booking.html?type=tour&id=3" class="btn btn-primary btn-sm">View Tour</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Swiss Alps">
+            <span class="result-badge">Active</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Swiss Alps Hiking</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Switzerland
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.7</span>
+              <span class="reviews">(134 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">8 Days</span>
+              <span class="amenity-tag">Adventure</span>
+              <span class="amenity-tag">Moderate</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$3,199 <span>/ person</span></div>
+              <a href="booking.html?type=tour&id=4" class="btn btn-primary btn-sm">View Tour</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80" alt="Rome History">
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Ancient Rome &amp; Vatican</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Rome, Italy
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.8</span>
+              <span class="reviews">(267 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">5 Days</span>
+              <span class="amenity-tag">History</span>
+              <span class="amenity-tag">Skip-the-line</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$1,899 <span>/ person</span></div>
+              <a href="booking.html?type=tour&id=5" class="btn btn-primary btn-sm">View Tour</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali Wellness">
+            <span class="result-badge">Wellness</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Bali Wellness Retreat</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Ubud, Bali
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.9</span>
+              <span class="reviews">(189 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">7 Days</span>
+              <span class="amenity-tag">Yoga</span>
+              <span class="amenity-tag">Spa</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$2,299 <span>/ person</span></div>
+              <a href="booking.html?type=tour&id=6" class="btn btn-primary btn-sm">View Tour</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span>Djawlaty</span>
+          </a>
+          <p>Your trusted partner for unforgettable travel experiences.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="flights.html">Flights</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+            <li><a href="restaurants.html">Restaurants</a></li>
+            <li><a href="tours.html">Tours</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Djawlaty. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

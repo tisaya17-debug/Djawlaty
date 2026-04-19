@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking - Djawlaty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+       <img src="djawlaty1.png" height="120px" width="140px">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="flights.html">Flights</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="restaurants.html">Restaurants</a></li>
+        <li><a href="tours.html">Tours</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="provider-login.html" class="btn btn-ghost">Provider Login</a>
+        <a href="admin.html" class="btn btn-primary">Admin</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Booking Page -->
+  <div class="booking-page">
+    <div class="container">
+      <div class="booking-container">
+        <!-- Booking Form -->
+        <div class="booking-form">
+          <!-- Traveler Info -->
+          <div class="form-card">
+            <div class="form-card-header">
+              <h2 class="form-card-title">Traveler Information</h2>
+              <p class="form-card-description">Please provide details for all travelers</p>
+            </div>
+            <form id="bookingForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" required placeholder="John">
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8900">
+                </div>
+                <div class="form-group">
+                  <label for="dob">Date of Birth</label>
+                  <input type="date" id="dob" name="dob">
+                </div>
+                <div class="form-group">
+                  <label for="nationality">Nationality</label>
+                  <select id="nationality" name="nationality">
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label for="passport">Passport Number</label>
+                  <input type="text" id="passport" name="passport" placeholder="AB1234567">
+                </div>
+                <div class="form-group full-width">
+                  <label for="specialRequests">Special Requests</label>
+                  <textarea id="specialRequests" name="specialRequests" placeholder="Dietary requirements, accessibility needs, etc."></textarea>
+                </div>
+              </div>
+          </div>
+
+          <!-- Payment Info -->
+          <div class="form-card">
+            <div class="form-card-header">
+              <h2 class="form-card-title">Payment Information</h2>
+              <p class="form-card-description">Your payment details are secure and encrypted</p>
+            </div>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="cardName">Name on Card *</label>
+                <input type="text" id="cardName" name="cardName" required placeholder="John Doe">
+              </div>
+              <div class="form-group full-width">
+                <label for="cardNumber">Card Number *</label>
+                <input type="text" id="cardNumber" name="cardNumber" required placeholder="1234 5678 9012 3456" maxlength="19">
+              </div>
+              <div class="form-group">
+                <label for="expiry">Expiry Date *</label>
+                <input type="text" id="expiry" name="expiry" required placeholder="MM/YY" maxlength="5">
+              </div>
+              <div class="form-group">
+                <label for="cvv">CVV *</label>
+                <input type="text" id="cvv" name="cvv" required placeholder="123" maxlength="4">
+              </div>
+              <div class="form-group full-width">
+                <label for="billingAddress">Billing Address *</label>
+                <input type="text" id="billingAddress" name="billingAddress" required placeholder="123 Main St, City, Country">
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-card">
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the Terms and Conditions and Privacy Policy *</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="insurance" name="insurance">
+                <label for="insurance">Add travel insurance (+$49 per person)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">Subscribe to newsletter for exclusive deals</label>
+              </div>
+            </div>
+            <div class="form-actions">
+              <a href="javascript:history.back()" class="btn btn-outline">Back</a>
+              <button type="submit" class="btn btn-primary btn-lg">Complete Booking</button>
+            </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Booking Summary -->
+        <div class="booking-summary">
+          <h3 class="booking-summary-title">Booking Summary</h3>
+          
+          <div class="booking-item">
+            <div class="booking-item-image">
+              <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=200&q=80" alt="Paris">
+            </div>
+            <div class="booking-item-details">
+              <h4>Air France Flight AF 1234</h4>
+              <p>New York (JFK) to Paris (CDG)</p>
+              <p>May 15, 2026 - May 22, 2026</p>
+            </div>
+          </div>
+
+          <div class="booking-item">
+            <div class="booking-item-image">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&q=80" alt="Hotel">
+            </div>
+            <div class="booking-item-details">
+              <h4>Hotel Le Marais</h4>
+              <p>Deluxe Room - 7 nights</p>
+              <p>2 guests</p>
+            </div>
+          </div>
+
+          <div class="booking-price-breakdown">
+            <div class="price-row">
+              <span>Flight (2 passengers)</span>
+              <span>$1,098</span>
+            </div>
+            <div class="price-row">
+              <span>Hotel (7 nights)</span>
+              <span>$1,323</span>
+            </div>
+            <div class="price-row">
+              <span>Taxes & Fees</span>
+              <span>$186</span>
+            </div>
+            <div class="price-row">
+              <span>Service Fee</span>
+              <span>$25</span>
+            </div>
+            <div class="price-row total">
+              <span>Total</span>
+              <span>$2,632</span>
+            </div>
+          </div>
+
+          <div style="background-color: var(--muted); padding: 1rem; border-radius: var(--radius); margin-top: 1rem;">
+            <p style="font-size: 0.813rem; color: var(--muted-foreground); margin: 0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 1rem; height: 1rem; display: inline-block; vertical-align: -3px; margin-right: 0.25rem;">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Your booking is protected by our secure payment system. Free cancellation up to 48 hours before departure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span>Djawlaty</span>
+          </a>
+          <p>Your trusted partner for unforgettable travel experiences.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="flights.html">Flights</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+            <li><a href="restaurants.html">Restaurants</a></li>
+            <li><a href="tours.html">Tours</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Djawlaty. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

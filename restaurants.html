@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurants - Djawlaty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="djawlaty1.png" height="120px" width="140px">
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="flights.html">Flights</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="restaurants.html" class="active">Restaurants</a></li>
+        <li><a href="tours.html">Tours</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost">Login</a>
+        <a href="admin.html" class="btn btn-primary">Dashboard</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1>Discover <span class="text-accent">Dining</span></h1>
+    <p>Reserve tables at the finest restaurants and explore local cuisine</p>
+  </header>
+
+  <!-- Filters and Results -->
+  <section class="results-section">
+    <div class="container">
+      <!-- Filters Panel -->
+      <div class="filters-panel">
+        <div class="filters-header">
+          <h3>Search Filters</h3>
+          <button class="btn btn-ghost btn-sm">Reset All</button>
+        </div>
+        <div class="filters-grid">
+          <div class="filter-group">
+            <label>Location</label>
+            <input type="text" placeholder="City or area" value="Paris">
+          </div>
+          <div class="filter-group">
+            <label>Cuisine Type</label>
+            <select>
+              <option>All Cuisines</option>
+              <option selected>French</option>
+              <option>Italian</option>
+              <option>Japanese</option>
+              <option>Indian</option>
+              <option>Mediterranean</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Date</label>
+            <input type="date">
+          </div>
+          <div class="filter-group">
+            <label>Time</label>
+            <select>
+              <option>Any Time</option>
+              <option>Lunch (11:00-14:00)</option>
+              <option selected>Dinner (18:00-22:00)</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Party Size</label>
+            <select>
+              <option>1 Person</option>
+              <option selected>2 People</option>
+              <option>3-4 People</option>
+              <option>5+ People</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Price Range</label>
+            <select>
+              <option>Any Price</option>
+              <option>$ Budget</option>
+              <option>$$ Moderate</option>
+              <option selected>$$$ Fine Dining</option>
+              <option>$$$$ Luxury</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Dietary Options</label>
+            <select>
+              <option>Any</option>
+              <option>Vegetarian</option>
+              <option>Vegan</option>
+              <option>Halal</option>
+              <option>Gluten-Free</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Features</label>
+            <select>
+              <option>All Features</option>
+              <option>Outdoor Seating</option>
+              <option>Private Dining</option>
+              <option>Live Music</option>
+              <option>View</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Header -->
+      <div class="results-header">
+        <p class="results-count">Showing <strong>15</strong> restaurants</p>
+        <select class="sort-select" id="sortSelect">
+          <option value="recommended">Recommended</option>
+          <option value="rating">Highest Rated</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+        </select>
+      </div>
+
+      <!-- Restaurant Results -->
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Le Petit Bistro">
+            <span class="result-badge">Michelin Star</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Le Petit Bistro</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Saint-Germain, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.9</span>
+              <span class="reviews">(428 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">French</span>
+              <span class="amenity-tag">$$$</span>
+              <span class="amenity-tag">Romantic</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$85 <span>avg/person</span></div>
+              <a href="booking.html?type=restaurant&id=1" class="btn btn-primary btn-sm">Reserve</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Chez Marcel">
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Chez Marcel</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Le Marais, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.7</span>
+              <span class="reviews">(312 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">French</span>
+              <span class="amenity-tag">$$</span>
+              <span class="amenity-tag">Casual</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$45 <span>avg/person</span></div>
+              <a href="booking.html?type=restaurant&id=2" class="btn btn-primary btn-sm">Reserve</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=600&q=80" alt="Sakura Japanese">
+            <span class="result-badge">Top Pick</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Sakura Japanese</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Opera District, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.8</span>
+              <span class="reviews">(256 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Japanese</span>
+              <span class="amenity-tag">$$$</span>
+              <span class="amenity-tag">Omakase</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$120 <span>avg/person</span></div>
+              <a href="booking.html?type=restaurant&id=3" class="btn btn-primary btn-sm">Reserve</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80" alt="La Terrasse">
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">La Terrasse</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Champs-Elysees, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.5</span>
+              <span class="reviews">(189 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Mediterranean</span>
+              <span class="amenity-tag">$$</span>
+              <span class="amenity-tag">Outdoor</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$55 <span>avg/person</span></div>
+              <a href="booking.html?type=restaurant&id=4" class="btn btn-primary btn-sm">Reserve</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Spice Route">
+            <span class="result-badge">Vegetarian Friendly</span>
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Spice Route</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              10th Arrondissement, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.6</span>
+              <span class="reviews">(367 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Indian</span>
+              <span class="amenity-tag">$$</span>
+              <span class="amenity-tag">Vegan Options</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$35 <span>avg/person</span></div>
+              <a href="booking.html?type=restaurant&id=5" class="btn btn-primary btn-sm">Reserve</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-image">
+            <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=600&q=80" alt="Trattoria Roma">
+            <button class="result-favorite" aria-label="Add to favorites">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="result-card-content">
+            <h3 class="result-card-title">Trattoria Roma</h3>
+            <div class="result-card-location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Bastille, Paris
+            </div>
+            <div class="result-card-rating">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>4.4</span>
+              <span class="reviews">(223 reviews)</span>
+            </div>
+            <div class="result-card-amenities">
+              <span class="amenity-tag">Italian</span>
+              <span class="amenity-tag">$$</span>
+              <span class="amenity-tag">Family</span>
+            </div>
+            <div class="result-card-footer">
+              <div class="result-price">$40 <span>avg/person</span></div>
+              <a href="booking.html?type=restaurant&id=6" class="btn btn-primary btn-sm">Reserve</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span>Djawlaty</span>
+          </a>
+          <p>Your trusted partner for unforgettable travel experiences.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="flights.html">Flights</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+            <li><a href="restaurants.html">Restaurants</a></li>
+            <li><a href="tours.html">Tours</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Djawlaty. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
