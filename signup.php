@@ -1,29 +1,28 @@
 <?php
 include("config.php");
 
-$fullname = $_POST['fullname'];
-$username = $_POST['username'];
-$email = $_POST['email'];
+// تأمين المدخلات
+$fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+$username = mysqli_real_escape_string($conn, $_POST['username']);
+$email    = mysqli_real_escape_string($conn, $_POST['email']);
 $password = $_POST['password'];
-$confirm = $_POST['confirm_password'];
-$role = $_POST['role'];
-$field = $_POST['field'];
+$confirm  = $_POST['confirm_password'];
+$role     = mysqli_real_escape_string($conn, $_POST['role']);
+$field    = mysqli_real_escape_string($conn, $_POST['field']);
 
-// 1. check password match
+// 1. التأكد من تطابق كلمة السر
 if($password != $confirm){
-    die("Passwords do not match");
+    echo "<script>alert('Les mots de passe ne correspondent pas'); window.history.back();</script>";
+    exit();
 }
 
-// 2. insert into database
-$sql = "INSERT INTO users 
-(fullname, username, email, password, role, field)
-VALUES 
-('$fullname','$username','$email','$password','$role','$field')";
+// 2. إدخال البيانات في قاعدة البيانات
+$sql = "INSERT INTO users (fullname, username, email, password, role, field)
+        VALUES ('$fullname', '$username', '$email', '$password', '$role', '$field')";
 
-$result = mysqli_query($conn,$sql);
-
-if($result){
-    echo "Account created successfully";
+if(mysqli_query($conn, $sql)){
+    // توجيه المستخدم لصفحة تسجيل الدخول بعد النجاح
+    echo "<script>alert('Compte créé avec succès ! Connectez-vous.'); window.location='login.html';</script>";
 } else {
     echo "Error: " . mysqli_error($conn);
 }

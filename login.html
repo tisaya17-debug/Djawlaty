@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -10,20 +11,22 @@
 
 <div class="login-container">
 
-    <form class="login-form" id="loginForm">
+    <form class="login-form" action="login.php" method="POST">
 
         <h2>Login</h2>
 
-        <input type="text" placeholder="Username" required>
-        <input type="password" placeholder="Password" required>
+        <input type="text" name="username" placeholder="Username" required>
+        
+        <input type="password" name="password" placeholder="Password" required>
 
-        <!-- Role Buttons -->
         <label>Select your role:</label>
         <div class="role-group">
-           <button type="button" class="role-btn" data-role="admin">Admin</button>
-           <button type="button" class="role-btn" data-role="provider">Provider</button>
-           <button type="button" class="role-btn" data-role="client">Client</button>
+            <button type="button" class="role-btn" onclick="setRole('Admin')">Admin</button>
+            <button type="button" class="role-btn" onclick="setRole('Provider')">Provider</button>
+            <button type="button" class="role-btn" onclick="setRole('Client')">Client</button>
         </div>
+
+        <input type="hidden" name="role" id="selected-role" required>
 
         <button type="submit" class="login-btn">Login</button>
 
@@ -35,6 +38,32 @@
 
 </div>
 
-<script src="main.js"></script>
+<script>
+const buttons = document.querySelectorAll(".role-btn");
+const roleInput = document.getElementById("selected-role");
+
+// Fonction pour mettre à jour la valeur du rôle et gérer l'apparence
+function setRole(roleValue) {
+    // On met la valeur dans l'input caché
+    roleInput.value = roleValue;
+    
+    // On gère la classe "active" pour le design
+    buttons.forEach(btn => {
+        btn.classList.remove("active");
+        if (btn.innerText === roleValue) {
+            btn.classList.add("active");
+        }
+    });
+}
+
+// Sécurité : si l'utilisateur clique sur le bouton sans boucle foreach manuelle
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+    });
+});
+</script>
+
 </body>
 </html>

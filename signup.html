@@ -8,56 +8,44 @@
 
 <body class="body">
 
-<div class="login-container" >
+<div class="login-container">
 
-<<<<<<< HEAD
-<form class="login-form" action="signup.php" method="POST">
-=======
-    <form class="login-form" id="signupForm">
->>>>>>> d4d9bdc9c7fd6f8aa6430abdc02b09f262258090
+<form class="login-form" id="signupForm" action="signup.php" method="POST">
 
 <h2>Sign Up</h2>
 
+<!-- INPUTS -->
 <input type="text" name="fullname" placeholder="Full Name" required>
 <input type="text" name="username" placeholder="Username" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="password" name="password" placeholder="Password" required>
 <input type="password" name="confirm_password" placeholder="Confirm Password" required>
 
-<<<<<<< HEAD
-<!-- hidden inputs -->
+<!-- hidden inputs (JS will fill them) -->
 <input type="hidden" name="role" id="role">
 <input type="hidden" name="field" id="field">
-=======
-        <!-- Role Selection -->
-        <label>Select your role:</label>
-        <div class="role-group">
-           
-<button type="button" class="role-btn" data-role="provider">Provider</button>
-<button type="button" class="role-btn" data-role="client">Client</button>
-        </div>
->>>>>>> d4d9bdc9c7fd6f8aa6430abdc02b09f262258090
 
+<!-- ROLE -->
 <label>Select your role:</label>
-
 <div class="role-group">
-<button type="button" class="role-btn" data-role="provider">Provider</button>
-<button type="button" class="role-btn" data-role="client">Client</button>
+  <button type="button" class="role-btn" data-role="provider">Provider</button>
+  <button type="button" class="role-btn" data-role="client">Client</button>
 </div>
 
-<!-- provider fields -->
+<!-- PROVIDER FIELDS -->
 <div id="provider-fields" style="display:none;">
 
-<label>Select your field:</label>
+  <label>Select your field:</label>
 
-<div class="field-group">
-<button type="button" class="field-btn">Hotel</button>
-<button type="button" class="field-btn">Restaurant</button>
-<button type="button" class="field-btn">Tour Operators</button>
+  <div class="field-group">
+    <button type="button" class="field-btn">Hotel</button>
+    <button type="button" class="field-btn">Restaurant</button>
+    <button type="button" class="field-btn">Tour Operators</button>
+  </div>
+
 </div>
 
-</div>
-
+<!-- SUBMIT -->
 <button type="submit" class="login-btn">Create Account</button>
 
 <p class="signup-text">
@@ -69,5 +57,6 @@ Already have an account? <a href="login.html">Login</a>
 </div>
 
 <script src="main.js"></script>
+
 </body>
 </html>
