@@ -8,9 +8,13 @@
 
 <body class="body">
 
-<div class="login-container">
+<div class="login-container" >
 
+<<<<<<< HEAD
 <form class="login-form" action="signup.php" method="POST">
+=======
+    <form class="login-form" id="signupForm">
+>>>>>>> d4d9bdc9c7fd6f8aa6430abdc02b09f262258090
 
 <h2>Sign Up</h2>
 
@@ -20,9 +24,19 @@
 <input type="password" name="password" placeholder="Password" required>
 <input type="password" name="confirm_password" placeholder="Confirm Password" required>
 
+<<<<<<< HEAD
 <!-- hidden inputs -->
 <input type="hidden" name="role" id="role">
 <input type="hidden" name="field" id="field">
+=======
+        <!-- Role Selection -->
+        <label>Select your role:</label>
+        <div class="role-group">
+           
+<button type="button" class="role-btn" data-role="provider">Provider</button>
+<button type="button" class="role-btn" data-role="client">Client</button>
+        </div>
+>>>>>>> d4d9bdc9c7fd6f8aa6430abdc02b09f262258090
 
 <label>Select your role:</label>
 
@@ -55,6 +69,5 @@ Already have an account? <a href="login.html">Login</a>
 </div>
 
 <script src="main.js"></script>
-
 </body>
 </html>

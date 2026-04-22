@@ -1,3 +1,4 @@
+// ================= NAVBAR =================
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navLinks = document.getElementById('navLinks');
 
@@ -7,20 +8,14 @@ if (mobileMenuBtn && navLinks) {
   });
 }
 
-// Navbar Scroll Effect
 const navbar = document.getElementById('navbar');
-
 if (navbar) {
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
   });
 }
 
-// Search Tabs
+// ================= SEARCH =================
 const searchTabs = document.querySelectorAll('.search-tab');
 const searchForm = document.getElementById('searchForm');
 
@@ -29,479 +24,126 @@ if (searchTabs.length > 0) {
     tab.addEventListener('click', () => {
       searchTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      
-      // Update form fields based on selected tab
-      const tabType = tab.dataset.tab;
-      updateSearchFields(tabType);
+      updateSearchFields(tab.dataset.tab);
     });
   });
 }
 
 function updateSearchFields(type) {
-  const fieldsContainer = document.getElementById('flightsFields');
-  if (!fieldsContainer) return;
-  
-  switch(type) {
-    case 'flights':
-      fieldsContainer.innerHTML = `
-        <div class="field-group">
-          <label>From</label>
-          <input type="text" placeholder="Departure city" name="from">
-        </div>
-        <div class="field-group">
-          <label>To</label>
-          <input type="text" placeholder="Destination city" name="to">
-        </div>
-        <div class="field-group">
-          <label>Departure</label>
-          <input type="date" name="departure">
-        </div>
-        <div class="field-group">
-          <label>Return</label>
-          <input type="date" name="return">
-        </div>
-        <div class="field-group">
-          <label>Travelers</label>
-          <select name="travelers">
-            <option>1 Adult</option>
-            <option>2 Adults</option>
-            <option>3 Adults</option>
-            <option>4+ Adults</option>
-          </select>
-        </div>
-      `;
-      break;
-    case 'hotels':
-      fieldsContainer.innerHTML = `
-        <div class="field-group">
-          <label>Destination</label>
-          <input type="text" placeholder="City or hotel name" name="destination">
-        </div>
-        <div class="field-group">
-          <label>Check-in</label>
-          <input type="date" name="checkin">
-        </div>
-        <div class="field-group">
-          <label>Check-out</label>
-          <input type="date" name="checkout">
-        </div>
-        <div class="field-group">
-          <label>Rooms</label>
-          <select name="rooms">
-            <option>1 Room</option>
-            <option>2 Rooms</option>
-            <option>3 Rooms</option>
-            <option>4+ Rooms</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <label>Guests</label>
-          <select name="guests">
-            <option>1 Guest</option>
-            <option>2 Guests</option>
-            <option>3 Guests</option>
-            <option>4+ Guests</option>
-          </select>
-        </div>
-      `;
-      break;
-    case 'restaurants':
-      fieldsContainer.innerHTML = `
-        <div class="field-group">
-          <label>Location</label>
-          <input type="text" placeholder="City or area" name="location">
-        </div>
-        <div class="field-group">
-          <label>Cuisine</label>
-          <select name="cuisine">
-            <option value="">All Cuisines</option>
-            <option>Italian</option>
-            <option>Japanese</option>
-            <option>French</option>
-            <option>Indian</option>
-            <option>Mexican</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <label>Date</label>
-          <input type="date" name="date">
-        </div>
-        <div class="field-group">
-          <label>Time</label>
-          <input type="time" name="time">
-        </div>
-        <div class="field-group">
-          <label>Party Size</label>
-          <select name="partySize">
-            <option>2 People</option>
-            <option>3 People</option>
-            <option>4 People</option>
-            <option>5+ People</option>
-          </select>
-        </div>
-      `;
-      break;
-    case 'tours':
-      fieldsContainer.innerHTML = `
-        <div class="field-group">
-          <label>Destination</label>
-          <input type="text" placeholder="Country or region" name="destination">
-        </div>
-        <div class="field-group">
-          <label>Start Date</label>
-          <input type="date" name="startDate">
-        </div>
-        <div class="field-group">
-          <label>Duration</label>
-          <select name="duration">
-            <option>Any Duration</option>
-            <option>1-3 Days</option>
-            <option>4-7 Days</option>
-            <option>1-2 Weeks</option>
-            <option>2+ Weeks</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <label>Tour Type</label>
-          <select name="tourType">
-            <option>All Types</option>
-            <option>Adventure</option>
-            <option>Cultural</option>
-            <option>Relaxation</option>
-            <option>Family</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <label>Group Size</label>
-          <select name="groupSize">
-            <option>Any Size</option>
-            <option>Small (1-8)</option>
-            <option>Medium (9-15)</option>
-            <option>Large (16+)</option>
-          </select>
-        </div>
-      `;
-      break;
-  }
+  const container = document.getElementById('flightsFields');
+  if (!container) return;
+
+  const fields = {
+    flights: `
+      <div class="field-group"><label>From</label><input type="text" name="from"></div>
+      <div class="field-group"><label>To</label><input type="text" name="to"></div>
+      <div class="field-group"><label>Departure</label><input type="date" name="departure"></div>
+      <div class="field-group"><label>Return</label><input type="date" name="return"></div>
+    `,
+    hotels: `
+      <div class="field-group"><label>Destination</label><input type="text" name="destination"></div>
+      <div class="field-group"><label>Check-in</label><input type="date"></div>
+      <div class="field-group"><label>Check-out</label><input type="date"></div>
+    `,
+    restaurants: `
+      <div class="field-group"><label>Location</label><input type="text"></div>
+      <div class="field-group"><label>Date</label><input type="date"></div>
+      <div class="field-group"><label>Time</label><input type="time"></div>
+    `,
+    tours: `
+      <div class="field-group"><label>Destination</label><input type="text"></div>
+      <div class="field-group"><label>Date</label><input type="date"></div>
+    `
+  };
+
+  container.innerHTML = fields[type] || "";
 }
 
-// Search Form Submit
 if (searchForm) {
   searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const activeTab = document.querySelector('.search-tab.active');
-    const tabType = activeTab ? activeTab.dataset.tab : 'flights';
-    
-    // Redirect to appropriate page
-    window.location.href = `${tabType}.html`;
+    const active = document.querySelector('.search-tab.active');
+    window.location.href = `${active?.dataset.tab || 'flights'}.html`;
   });
 }
 
-// Favorite Button Toggle
-document.addEventListener('click', (e) => {
-  if (e.target.closest('.result-favorite')) {
-    const btn = e.target.closest('.result-favorite');
-    btn.classList.toggle('active');
-  }
-});
-
-// Filter Toggle
-const filterToggleBtn = document.getElementById('filterToggle');
-const filtersPanel = document.getElementById('filtersPanel');
-
-if (filterToggleBtn && filtersPanel) {
-  filterToggleBtn.addEventListener('click', () => {
-    filtersPanel.classList.toggle('hidden');
-  });
-}
-
-// Price Range Slider
-const priceRange = document.getElementById('priceRange');
-const priceValue = document.getElementById('priceValue');
-
-if (priceRange && priceValue) {
-  priceRange.addEventListener('input', () => {
-    priceValue.textContent = `$${priceRange.value}`;
-  });
-}
-
-// Tabs Functionality
-const tabs = document.querySelectorAll('.tab');
-const tabContents = document.querySelectorAll('.tab-content');
-
-if (tabs.length > 0) {
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.target;
-      
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      
-      tabContents.forEach(content => {
-        content.classList.remove('active');
-        if (content.id === target) {
-          content.classList.add('active');
-        }
-      });
-    });
-  });
-}
-
-// Modal Functionality
-function openModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
-
-// Close modal on overlay click
-document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('modal-overlay')) {
-    e.target.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-});
-
-// Close modal on escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const activeModal = document.querySelector('.modal-overlay.active');
-    if (activeModal) {
-      activeModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  }
-});
-
-// Form Validation
+// ================= COMMON =================
 function validateForm(form) {
-  const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-  let isValid = true;
-  
-  inputs.forEach(input => {
+  let valid = true;
+  form.querySelectorAll('[required]').forEach(input => {
     if (!input.value.trim()) {
-      isValid = false;
       input.classList.add('error');
+      valid = false;
     } else {
       input.classList.remove('error');
     }
   });
-  
-  return isValid;
+  return valid;
 }
 
-// Booking Form
-const bookingForm = document.getElementById('bookingForm');
+// ================= LOGIN =================
+const loginForm = document.getElementById("loginForm");
+let selectedRole = null;
 
-if (bookingForm) {
-  bookingForm.addEventListener('submit', (e) => {
+document.querySelectorAll(".role-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".role-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedRole = btn.dataset.role;
+  });
+});
+
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    
-    if (validateForm(bookingForm)) {
-      // Simulate booking submission
-      alert('Booking submitted successfully! You will receive a confirmation email shortly.');
-      window.location.href = 'index.html';
-    } else {
-      alert('Please fill in all required fields.');
+
+    const username = loginForm.querySelector('input[type="text"]').value;
+    const password = loginForm.querySelector('input[type="password"]').value;
+
+    if (!username || !password || !selectedRole) {
+      alert("Fill all fields");
+      return;
     }
+
+    if (selectedRole === "admin") window.location.href = "admin.html";
+    else if (selectedRole === "provider") window.location.href = "providers-dashboard.html";
+    else window.location.href = "index.html";
   });
 }
 
-// Provider Login Form
-const providerLoginForm = document.getElementById('providerLoginForm');
-
-if (providerLoginForm) {
-  providerLoginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const email = providerLoginForm.querySelector('input[type="email"]').value;
-    const password = providerLoginForm.querySelector('input[type="password"]').value;
-    
-    if (email && password) {
-      // Simulate login
-      window.location.href = 'provider-dashboard.html';
-    } else {
-      alert('Please enter your email and password.');
-    }
-  });
-}
-
-// Admin Login Form
-const adminLoginForm = document.getElementById('adminLoginForm');
-
-if (adminLoginForm) {
-  adminLoginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const email = adminLoginForm.querySelector('input[type="email"]').value;
-    const password = adminLoginForm.querySelector('input[type="password"]').value;
-    
-    if (email && password) {
-      // Simulate login
-      window.location.href = 'admin-dashboard.html';
-    } else {
-      alert('Please enter your email and password.');
-    }
-  });
-}
-
-// Smooth Scroll for Anchor Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Lazy Load Images
-if ('IntersectionObserver' in window) {
-  const lazyImages = document.querySelectorAll('img[data-src]');
-  
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.removeAttribute('data-src');
-        observer.unobserve(img);
-      }
-    });
-  });
-  
-  lazyImages.forEach(img => imageObserver.observe(img));
-}
-
-// Initialize Date Inputs with Today's Date
-const dateInputs = document.querySelectorAll('input[type="date"]');
-const today = new Date().toISOString().split('T')[0];
-
-dateInputs.forEach(input => {
-  input.min = today;
-});
-
-// Sort Functionality
-const sortSelect = document.getElementById('sortSelect');
-const resultsGrid = document.querySelector('.results-grid');
-
-if (sortSelect && resultsGrid) {
-  sortSelect.addEventListener('change', () => {
-    const sortValue = sortSelect.value;
-    const cards = Array.from(resultsGrid.children);
-    
-    cards.sort((a, b) => {
-      const priceA = parseInt(a.querySelector('.result-price')?.textContent.replace(/\D/g, '') || 0);
-      const priceB = parseInt(b.querySelector('.result-price')?.textContent.replace(/\D/g, '') || 0);
-      const ratingA = parseFloat(a.querySelector('.result-card-rating span')?.textContent || 0);
-      const ratingB = parseFloat(b.querySelector('.result-card-rating span')?.textContent || 0);
-      
-      switch(sortValue) {
-        case 'price-low':
-          return priceA - priceB;
-        case 'price-high':
-          return priceB - priceA;
-        case 'rating':
-          return ratingB - ratingA;
-        default:
-          return 0;
-      }
-    });
-    
-    cards.forEach(card => resultsGrid.appendChild(card));
-  });
-}
-
-// Sidebar Active State
-const currentPage = window.location.pathname.split('/').pop();
-const sidebarLinks = document.querySelectorAll('.sidebar-link');
-
-sidebarLinks.forEach(link => {
-  if (link.getAttribute('href') === currentPage) {
-    link.classList.add('active');
-  }
-});
-const dropdownTriggers = document.querySelectorAll('[data-dropdown]');
-
-dropdownTriggers.forEach(trigger => {
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const dropdown = trigger.nextElementSibling;
-    if (dropdown && dropdown.classList.contains('dropdown-menu')) {
-      dropdown.classList.toggle('active');
-    }
-  });
-});
-
-document.addEventListener('click', () => {
-  document.querySelectorAll('.dropdown-menu.active').forEach(menu => {
-    menu.classList.remove('active');
-  });
-});
-
-// Toast Notifications
-function showToast(message, type = 'success') {
-  const toast = document.createElement('div');
-  toast.className = `toast toast-${type}`;
-  toast.textContent = message;
-  
-  document.body.appendChild(toast);
-  
-  setTimeout(() => toast.classList.add('show'), 100);
-  
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
-}
-window.openModal = openModal;
-window.closeModal = closeModal;
-window.showToast = showToast;
-const buttons = document.querySelectorAll(".role-btn");
+// ================= SIGNUP =================
+const signupForm = document.getElementById("signupForm");
 const providerFields = document.getElementById("provider-fields");
 
-buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
+let signupRole = null;
+let selectedField = null;
 
-        // remove active from all buttons
-        buttons.forEach(b => b.classList.remove("active"));
+// role
+document.querySelectorAll(".role-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    signupRole = btn.dataset.role;
 
-        // activate clicked button
-        btn.classList.add("active");
-
-        // show/hide provider fields
-        if (btn.dataset.role === "provider") {
-            providerFields.style.display = "block";
-        } else {
-            providerFields.style.display = "none";
-        }
-    });
+    if (providerFields) {
+      providerFields.style.display = signupRole === "provider" ? "block" : "none";
+    }
+  });
 });
-// FIELD BUTTONS (Provider fields)
-const fieldButtons = document.querySelectorAll(".field-btn");
 
-fieldButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
+// field
+document.querySelectorAll(".field-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".field-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedField = btn.textContent;
+  });
+});
 
-        // remove active from all field buttons
-        fieldButtons.forEach(b => b.classList.remove("active"));
-        // add active to clicked button
-        btn.classList.add("active");
+// submit
+if (signupForm) {
+  signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
+<<<<<<< HEAD
     });
 });
 document.addEventListener("DOMContentLoaded", function () {
@@ -556,4 +198,186 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+=======
+    const inputs = signupForm.querySelectorAll("input");
+    const fullName = inputs[0].value;
+    const username = inputs[1].value;
+    const email = inputs[2].value;
+    const password = inputs[3].value;
+    const confirm = inputs[4].value;
+
+    if (!fullName || !username || !email || !password || !confirm) {
+      alert("Fill all fields");
+      return;
+    }
+
+    if (password !== confirm) {
+      alert("Passwords not match");
+      return;
+    }
+
+    if (!signupRole) {
+      alert("Select role");
+      return;
+    }
+
+    if (signupRole === "provider" && !selectedField) {
+      alert("Select field");
+      return;
+    }
+
+    localStorage.setItem("user", JSON.stringify({
+      fullName, username, email, password,
+      role: signupRole, field: selectedField
+    }));
+
+    alert("Account created!");
+    window.location.href = "login.html";
+  });
+}
+
+// ================= EXTRA =================
+// smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// date min today
+document.querySelectorAll('input[type="date"]').forEach(input => {
+  input.min = new Date().toISOString().split('T')[0];
+});
+
+
+// ================= UNIVERSAL SORTING & FILTERING =================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sortSelect = document.getElementById('sortSelect');
+    const priceRange = document.getElementById('priceRange');
+    const priceValue = document.getElementById('priceValue');
+
+    // كلاسات الـ Grid والـ Cards الممكنة في كامل الصفحات
+    const gridSelectors = '.hotels-grid, .flights-list, .restaurants-grid, .tours-grid, .results-grid';
+    const cardSelectors = '.hotel-card, .flight-card, .restaurant-card, .tour-card, .result-card';
+
+    const getNumber = (text) => {
+        if (!text) return 0;
+        const num = text.replace(/[^0-9]/g, ''); 
+        return num ? parseInt(num) : 0;
+    };
+
+    // 1. Logic te3 order (Sorting)
+    if (sortSelect) {
+        sortSelect.addEventListener('change', () => {
+            const sortBy = sortSelect.value;
+            const resultsGrid = document.querySelector(gridSelectors);
+            const allCards = Array.from(document.querySelectorAll(cardSelectors));
+
+            if (!resultsGrid || allCards.length === 0) return;
+
+            allCards.sort((a, b) => {
+                // give the price
+                const priceA = getNumber(a.querySelector('.result-price, .price')?.textContent);
+                const priceB = getNumber(b.querySelector('.result-price, .price')?.textContent);
+
+                // (Rating)
+                // يحوس على أي رقم فيه فاصلة (مثلا 4.8) داخل الكارد
+                const extractRating = (card) => {
+                    // أولا: نشوفو إذا كاين "Direct" في الطيارات
+                    if (card.querySelector('.direct')) return 5.0;
+
+                    // ثانيا: نحوسو على أي نص فيه رقم (4.5, 5.0) داخل الـ rating class
+                    const ratingText = card.querySelector('.rating, .stars, .result-card-rating')?.textContent || "0";
+                    const match = ratingText.match(/\d+(\.\d+)?/); // Regex باش يلقى الرقم بالفاصلة
+                    return match ? parseFloat(match[0]) : 0;
+                };
+
+                const ratingA = extractRating(a);
+                const ratingB = extractRating(b);
+
+                if (sortBy === 'price-low') return priceA - priceB;
+                if (sortBy === 'price-high') return priceB - priceA;
+                if (sortBy === 'rating') return ratingB - ratingA; // من الكبير للصغير
+                return 0;
+            });
+
+            // إعادة وضع الكاردات مرتبين
+            allCards.forEach(card => resultsGrid.appendChild(card));
+        });
+    }
+
+    // 2. Logic تاع فلتر السعر (Filter)
+    if (priceRange) {
+        priceRange.addEventListener('input', () => {
+            const currentPrice = parseInt(priceRange.value);
+            if (priceValue) priceValue.textContent = `$${currentPrice}`;
+
+            const allCards = document.querySelectorAll(cardSelectors);
+            allCards.forEach(card => {
+                const priceElem = card.querySelector('.result-price, .price');
+                if (priceElem) {
+                    const price = getNumber(priceElem.textContent);
+                    card.style.display = (price <= currentPrice) ? 'block' : 'none';
+                }
+            });
+        });
+    }
+});
+// ================= BOOKING PROCESS =================
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select the booking form by its ID from the HTML
+    const bookingForm = document.getElementById('bookingForm');
+
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+           // Prevent the default form submission (stops the page from refreshing)
+            e.preventDefault(); 
+
+            // message bli der resevation
+            alert("Success! Your booking with Djawlaty has been confirmed.");
+
+            // 2 redirect the user to index after click ok
+            window.location.href = "index.html";
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const addForm = document.getElementById('addProviderForm');
+    const tableBody = document.querySelector('#providersTable tbody');
+
+    if (addForm && tableBody) {
+        addForm.addEventListener('submit', (e) => {
+            // Prevent page refresh
+            e.preventDefault();
+
+            // Get data from English form inputs
+            const name = document.getElementById('serviceName').value;
+            const service = document.getElementById('serviceType').value;
+            const date = document.getElementById('serviceDate').value;
+            
+            // Generate a random ID like your existing data
+            const randomID = `#BK-2026-${Math.floor(Math.random() * 900) + 100}`;
+
+            // Create the new table row (HTML structure)
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${randomID}</td>
+                <td>${name}</td>
+                <td>${service}</td>
+                <td>${date}</td>
+                <td><span class="status-badge pending">Pending</span></td>
+            `;
+
+            // Add the row to the top of the table
+            tableBody.prepend(newRow);
+
+            // Success message and reset form
+            alert("Provider successfully added to the list!");
+            addForm.reset();
+        });
+    }
 });

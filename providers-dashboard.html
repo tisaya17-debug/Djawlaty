@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Providers Dashboard - Djawlaty</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       
+        body {
+            display: flex;
+            margin: 0;
+            background-color: #f4f7f6;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .main-content {
+            margin-left: 260px; 
+            padding: 30px;
+            width: calc(100% - 260px);
+            box-sizing: border-box;
+        }
+
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid #1a7163;
+        }
+
+        .stat-card h4 {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .stat-card p {
+            margin: 10px 0 0;
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a7163;
+        }
+
+        /* 2. تصميم الـ Form (Vertical Style) */
+        .dashboard-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        .card-title {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 18px;
+            border-bottom: 1.5px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .input-group input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-add-provider {
+            background-color: #1a7163;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+
+        .btn-add-provider:hover {
+            background-color: #145a4f;
+        }
+
+        /* 3. تصميم الجدول */
+        .table-container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            background: #f9f9f9;
+            padding: 15px;
+            border-bottom: 2px solid #eee;
+            color: #555;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <a href="index.html" class="sidebar-logo">
+            <img src="djawlaty1.png" height="120" width="140">
+        </a>
+        <nav class="sidebar-nav">
+            <p class="sidebar-section-title">Settings</p>
+        <nav class="sidebar-nav">
+          <a href="setting.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            Settings
+          </a>
+          <a href="index.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            Logout
+          </a>
+      </div>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h4>All Services</h4>
+                <p>50</p>
+            </div>
+            <div class="stat-card" style="border-left-color: #3498db;">
+                <h4>Active Services</h4>
+                <p>20</p>
+            </div>
+            <div class="stat-card" style="border-left-color: #f39c12;">
+                <h4>Pending Requests</h4>
+                <p>14</p>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <h3 class="card-title">Register New Provider</h3>
+            <form id="providerForm" class="form-container">
+                <div class="input-group">
+                    <label>Provider / Company Name</label>
+                    <input type="text" id="pName" placeholder="e.g. Sahara Sky Agency" required>
+                </div>
+                <div class="input-group">
+                    <label>Service Category</label>
+                    <input type="text" id="pService" placeholder="e.g. Desert Tours, Transport" required>
+                </div>
+                <div class="input-group">
+                    <label>Country</label>
+                    <input type="text" id="pCountry" placeholder="e.g. Algeria, Morocco, UAE" required>
+                </div>
+                <div class="input-group">
+                    <label>Join Date</label>
+                    <input type="date" id="pDate" required>
+                </div>
+                <button type="submit" class="btn-add-provider">Add Provider</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <h3 class="card-title">Recent Providers List</h3>
+            <table id="providersTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Service Name</th>
+                        <th>Category</th>
+                        <th>Country</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#PRO-2026-001</td>
+                        <td>Sahara Sky Agency</td>
+                        <td>Desert Tours</td>
+                        <td>Algeria</td>
+                        <td><span class="status-badge confirmed">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>#PRO-2026-002</td>
+                        <td>Atlas Heights Hotel</td>
+                        <td>Accommodation</td>
+                        <td>Morocco</td>
+                        <td><span class="status-badge confirmed">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>#PRO-2026-003</td>
+                        <td>Dubai Luxury Travel</td>
+                        <td>Transport</td>
+                        <td>UAE</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('providerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 1. جلب البيانات من الـ Form
+            const name = document.getElementById('pName').value;
+            const service = document.getElementById('pService').value;
+            const country = document.getElementById('pCountry').value;
+            const date = document.getElementById('pDate').value;
+            const id = "#PRO-2026-" + Math.floor(Math.random() * 900 + 100);
+
+            // 2. إضافة سطر جديد للجدول
+            const tableBody = document.querySelector('#providersTable tbody');
+            const newRow = `
+                <tr>
+                    <td>${id}</td>
+                    <td>${name}</td>
+                    <td>${service}</td>
+                    <td>${country}</td>
+                    <td><span class="status-badge pending">Pending</span></td>
+                </tr>
+            `;
+
+            tableBody.insertAdjacentHTML('afterbegin', newRow);
+            
+            // 3. تنظيف الـ Form وتنبيه النجاح
+            alert("Success! " + name + " has been added.");
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
