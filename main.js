@@ -504,3 +504,56 @@ fieldButtons.forEach(btn => {
 
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+    // ===== SIGN UP ROLE SYSTEM =====
+
+    const roleButtons = document.querySelectorAll(".role-btn");
+    const providerFields = document.getElementById("provider-fields");
+    const roleInput = document.getElementById("role");
+
+    if (roleButtons.length > 0 && roleInput) {
+
+        roleButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+
+                roleButtons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                roleInput.value = btn.dataset.role;
+
+                if (providerFields) {
+                    if (btn.dataset.role === "provider") {
+                        providerFields.style.display = "block";
+                    } else {
+                        providerFields.style.display = "none";
+                    }
+                }
+
+            });
+        });
+
+    }
+
+
+    // ===== FIELD SYSTEM =====
+
+    const fieldButtons = document.querySelectorAll(".field-btn");
+    const fieldInput = document.getElementById("field");
+
+    if (fieldButtons.length > 0 && fieldInput) {
+
+        fieldButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+
+                fieldButtons.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                fieldInput.value = btn.textContent;
+
+            });
+        });
+
+    }
+
+});
