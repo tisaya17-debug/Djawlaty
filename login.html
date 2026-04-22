@@ -10,7 +10,7 @@
 
 <div class="login-container">
 
-    <form class="login-form">
+    <form class="login-form" id="loginForm">
 
         <h2>Login</h2>
 
@@ -20,9 +20,9 @@
         <!-- Role Buttons -->
         <label>Select your role:</label>
         <div class="role-group">
-            <button type="button" class="role-btn">Admin</button>
-            <button type="button" class="role-btn">Provider</button>
-            <button type="button" class="role-btn">Client</button>
+           <button type="button" class="role-btn" data-role="admin">Admin</button>
+           <button type="button" class="role-btn" data-role="provider">Provider</button>
+           <button type="button" class="role-btn" data-role="client">Client</button>
         </div>
 
         <button type="submit" class="login-btn">Login</button>
@@ -35,16 +35,6 @@
 
 </div>
 
-<script>
-const buttons = document.querySelectorAll(".role-btn");
-
-buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-    });
-});
-</script>
-
+<script src="main.js"></script>
 </body>
 </html>

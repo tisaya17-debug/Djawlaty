@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Destinations - Djawlaty</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS باش نضمنوا الهيكلة تجي صحيحة ومفصولة على الـ Sidebar */
+        body {
+            display: flex;
+            margin: 0;
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .main-content {
+            margin-left: 260px; /* نفس عرض الـ Sidebar تاعك */
+            padding: 40px;
+            width: calc(100% - 260px);
+            box-sizing: border-box;
+        }
+
+        .destination-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .form-title {
+            color: #1a7163;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f1f1f1;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .btn-add {
+            background-color: #1a7163;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-add:hover {
+            background-color: #145a4f;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <a href="index.html" class="sidebar-logo">
+            <img src="djawlaty1.png" height="120" width="140">
+        </a>
+        <nav class="sidebar-nav">
+            <a href="admin.html" class="sidebar-link">Dashboard</a>
+            <a href="admin-bookings.html" class="sidebar-link">Bookings</a>
+            <a href="admin-providers.html" class="sidebar-link">Providers</a>
+            <a href="destinations.html" class="sidebar-link active">Destinations</a>
+             <div class="sidebar-section">
+        <p class="sidebar-section-title">Settings</p>
+        <nav class="sidebar-nav">
+          <a href="setting.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            Settings
+          </a>
+          <a href="index.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            Logout
+          </a>
+      </div>
+        </nav>
+    </aside>
+
+    <div class="main-content">
+        
+        <div class="destination-card">
+            <h2 class="form-title">Add New Destination</h2>
+            <form id="addDestinationForm">
+                <div class="form-group">
+                    <label>Destination Name</label>
+                    <input type="text" id="destName" placeholder=" Algeria" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="destCategory">
+                        <option value="Nature & Landscape">Nature & Landscape</option>
+                        <option value="Historical Sites">Historical Sites</option>
+                        <option value="Beach & Sea">Beach & Sea</option>
+                        <option value="City Tour">City Tour</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="destDesc" rows="3" placeholder="Describe the beauty of this place..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-add">Add Destination to System</button>
+            </form>
+        </div>
+
+        <div class="providers-table">
+            <div class="providers-table-header">
+                <h3 class="providers-table-title">Recent Destinations</h3>
+            </div>
+            <table id="destTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Destination</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#DEST-001</td>
+                        <td>roma  (italy)</td>
+                        <td>Nature & Historical</td>
+                        <td>Stunning rock formations and ancient art.</td>
+                        <td><span class="status-badge confirmed">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td>#DEST-002</td>
+                        <td>spain</td>
+                        <td>Historical Sites</td>
+                        <td>Unique architecture.</td>
+                        <td><span class="status-badge confirmed">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('addDestinationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get values
+            const name = document.getElementById('destName').value;
+            const category = document.getElementById('destCategory').value;
+            const desc = document.getElementById('destDesc').value;
+            const id = "#DEST-" + Math.floor(Math.random() * 900 + 100);
+
+            // Create new row
+            const table = document.getElementById('destTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow(0);
+
+            newRow.innerHTML = `
+                <td>${id}</td>
+                <td>${name}</td>
+                <td>${category}</td>
+                <td>${desc}</td>
+                <td><span class="status-badge confirmed">Active</span></td>
+            `;
+
+            // Reset form and alert
+            alert("Success! Destination added.");
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
